@@ -1,11 +1,19 @@
 import express from "express";
 const server = express();
-server.get("/", (req, res) => {
+server.post("/", (req, res) => {
   res.json({ name: "apple" });
 });
-server.get("hello", (req, res) => {
+server.post("hello", (req, res) => {
   res.json({ name: "banana" });
 });
-server.listen(3000, () => {
-  console.log(`server started on ${port}`);
+server.post("hey", (req, res) => {
+  res.send("hello");
+});
+server.use(express.json());
+server.post("/login", (req, res) => {
+  console.log(req.body);
+  res.json({ name: "banana" });
+});
+server.listen(5000, () => {
+  console.log(`server started on ${5000}`);
 });
